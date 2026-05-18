@@ -1,5 +1,36 @@
-﻿html,
-body,
-#root {
-  min-height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary: #d9531e;
+  --primary-dark: #b84318;
+  --secondary: #22313f;
+  --bg-light: #f8f9fa;
+  --white: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #555555;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--white);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
 }

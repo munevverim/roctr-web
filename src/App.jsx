@@ -3,6 +3,8 @@ import './App.css'
 import logo from './assets/roctr-logo.png'
 import heroBg from './assets/hero-bg.png'
 import preview from './assets/software-preview.png'
+import roctrImg from './assets/roctr.png'
+import roctr3dImg from './assets/roctr3d.png'
 
 const features = [
   {
@@ -22,7 +24,44 @@ const features = [
   },
 ]
 
+const products = [
+  {
+    name: 'RocTR',
+    badge: '2D Analiz',
+    tagline: 'Profesyonel 2D Kaya Düşmesi Analizi',
+    description: 'Şev profili üzerinde kaya hareketini, enerji dağılımını ve sıçrama yüksekliğini yüksek doğrulukla modelleyin. DXF desteği, PDF raporlama ve güvenli lisans yönetimi tek pakette.',
+    img: null, // will use roctrImg
+    imgKey: 'roctr',
+    highlights: [
+      '2D yörünge simülasyonu',
+      'DXF/CAD dosya desteği',
+      'Otomatik PDF rapor',
+      'Bariyer optimizasyonu',
+    ],
+    badge2: 'Stabil Sürüm',
+    color: '#e84d1c',
+  },
+  {
+    name: 'RocTR 3D',
+    badge: '3D Analiz',
+    tagline: 'Tam 3D Kaya Düşmesi Simülasyonu',
+    description: 'Karmaşık arazi yapılarını üç boyutlu olarak modelleyin. Gerçekçi terren yüzeyleri, 3D bariyer yerleşimi ve çoklu senaryo karşılaştırması ile mühendislik kararlarınızı güçlendirin.',
+    img: null,
+    imgKey: 'roctr3d',
+    highlights: [
+      '3D yörünge simülasyonu',
+      'Gerçek terren yüzeyi',
+      '3D bariyer tasarımı',
+      'Çoklu senaryo analizi',
+    ],
+    badge2: 'Yeni',
+    color: '#1c7ee8',
+  },
+]
+
 function App() {
+  const productImages = { roctr: roctrImg, roctr3d: roctr3dImg }
+
   return (
     <div className="site">
       <header className="topbar">
@@ -35,8 +74,8 @@ function App() {
         </div>
         <nav className="nav-links">
           <a href="#features">Özellikler</a>
+          <a href="#products">Ürünler</a>
           <a href="#analysis">Analiz Araçları</a>
-          <a href="#about">Hakkımızda</a>
           <a href="mailto:info@roctr.app" className="cta-header">İletişime Geç</a>
         </nav>
       </header>
@@ -51,7 +90,7 @@ function App() {
               tek bir güçlü platformda birleştiren profesyonel analiz yazılımıdır.
             </p>
             <div className="hero-actions">
-              <a className="btn primary" href="#features">Ücretsiz Demo Başlat</a>
+              <a className="btn primary" href="#products">Ürünleri Keşfet</a>
               <a className="btn ghost" href="#analysis">Teknik Detayları Gör</a>
             </div>
           </div>
@@ -65,6 +104,52 @@ function App() {
               <p>{item.text}</p>
             </article>
           ))}
+        </section>
+
+        {/* Products Section */}
+        <section id="products" className="products-section">
+          <div className="products-header">
+            <span className="eyebrow" style={{ color: 'var(--primary)' }}>Yazılım Ailesi</span>
+            <h2 className="products-title">İki Güçlü Araç, Tek Ekosistem</h2>
+            <p className="products-subtitle">
+              Projenizin boyutuna ve karmaşıklığına göre 2D veya 3D analiz modülünü seçin.
+            </p>
+          </div>
+          <div className="products-grid">
+            {products.map((p) => (
+              <div key={p.name} className="product-card" style={{ '--accent': p.color }}>
+                <div className="product-card-header">
+                  <div className="product-badges">
+                    <span className="product-badge" style={{ background: p.color }}>{p.badge}</span>
+                    <span className="product-badge-new">{p.badge2}</span>
+                  </div>
+                  <h3 className="product-name">{p.name}</h3>
+                  <p className="product-tagline">{p.tagline}</p>
+                </div>
+                <div className="product-img-wrap">
+                  <img
+                    src={productImages[p.imgKey]}
+                    alt={`${p.name} ekran görüntüsü`}
+                    className="product-img"
+                  />
+                </div>
+                <div className="product-body">
+                  <p className="product-desc">{p.description}</p>
+                  <ul className="product-highlights">
+                    {p.highlights.map((h) => (
+                      <li key={h}>
+                        <span className="check-icon" style={{ color: p.color }}>✓</span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="mailto:info@roctr.app" className="btn product-cta" style={{ background: p.color }}>
+                    Demo Talep Et
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section id="analysis" className="shot">
